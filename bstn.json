@@ -36,7 +36,20 @@
       {
         "type": "docker-tag",
         "repository": "docker.io/{{user `project_name`}}/{{user `app`}}",
-        "tag": "{{user `glider_ver`}}"
+        "tag": "{{user `packer_ver`}}"
+      },
+      {
+        "type": "docker-push",
+        "login": true,
+        "login_username": "{{user `docker_username`}}",
+        "login_password": "{{user `docker_password`}}"
+      }
+    ],
+    [
+      {
+        "type": "docker-tag",
+        "repository": "docker.io/{{user `project_name`}}/{{user `app`}}",
+        "tag": "latest"
       },
       {
         "type": "docker-push",
@@ -49,7 +62,21 @@
       {
         "type": "docker-tag",
         "repository": "quay.io/{{user `project_name`}}/{{user `app`}}",
-        "tag": "{{user `glider_ver`}}"
+        "tag": "{{user `packer_ver`}}"
+      },
+      {
+        "type": "docker-push",
+        "login": true,
+        "login_server": "quay.io",
+        "login_username": "{{user `quay_username`}}",
+        "login_password": "{{user `quay_password`}}"
+      }
+    ],
+    [
+      {
+        "type": "docker-tag",
+        "repository": "quay.io/{{user `project_name`}}/{{user `app`}}",
+        "tag": "latest"
       },
       {
         "type": "docker-push",
@@ -61,3 +88,4 @@
     ]
   ]
 }
+
