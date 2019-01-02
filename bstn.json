@@ -7,7 +7,8 @@
     "docker_username": "{{env `DOCKER_USERNAME`}}",
     "docker_password": "{{env `DOCKER_PASSWORD`}}",
     "quay_username":   "{{env `QUAY_USERNAME`}}",
-    "quay_password":   "{{env `QUAY_PASSWORD`}}"
+    "quay_password":   "{{env `QUAY_PASSWORD`}}",
+    "tag":             "{{env `GLIDER_VERSION`}}"
   },
   "builders":[
     {
@@ -36,7 +37,7 @@
       {
         "type": "docker-tag",
         "repository": "docker.io/{{user `project_name`}}/{{user `app`}}",
-        "tag": "{{user `packer_ver`}}"
+        "tag": "{{user `tag`}}"
       },
       {
         "type": "docker-push",
@@ -62,7 +63,7 @@
       {
         "type": "docker-tag",
         "repository": "quay.io/{{user `project_name`}}/{{user `app`}}",
-        "tag": "{{user `packer_ver`}}"
+        "tag": "{{user `tag`}}"
       },
       {
         "type": "docker-push",
