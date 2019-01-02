@@ -4,7 +4,8 @@ name: github
 steps:
 - name: the more you know
   image: alpine:3.8
-  commands: env | sort
+  commands:
+  - env | sort
 
 - name: bstn
   image: yellowmegaman/pckrdckr:1.3.3
