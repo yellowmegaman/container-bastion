@@ -8,6 +8,11 @@ steps:
   - env | sort
   - ls $CI_WORKSPACE
 
+- name: check for accidentally dropped creds
+  image: yellowmegaman/trfflhg:2.0.98
+  commands:
+  - /usr/local/bin/trufflehog --regex --entropy=False file:///$CI_WORKSPACE
+
 - name: bstn
   image: yellowmegaman/pckrdckr:1.3.3
   environment:
