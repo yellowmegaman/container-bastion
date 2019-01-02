@@ -2,10 +2,10 @@ kind: pipeline
 name: github
 
 steps:
-- name: trfflhg
+- name: bstn
   image: yellowmegaman/pckrdckr:1.3.3
   environment:
-    APP: trfflhg
+    APP: bstn
     DOCKER_HOST: tcp://serviced:2375
     FROM_IMAGE: "alpine:3.8"
     GLIDER_VERSION: 0.6.9
