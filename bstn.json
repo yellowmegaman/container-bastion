@@ -1,6 +1,6 @@
 {
   "variables": {
-    "app":             "{{env `APP`}}",
+    "app":             "{{env `DRONE_REPO_NAME`}}",
     "from_image":      "{{env `FROM_IMAGE`}}",
     "project_name":    "{{env `PROJECT_NAME`}}",
     "glider_ver":      "{{env `GLIDER_VERSION`}}",

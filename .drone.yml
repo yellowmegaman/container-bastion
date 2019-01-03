@@ -9,14 +9,13 @@ steps:
   - ls $CI_WORKSPACE
 
 - name: check for accidentally dropped creds
-  image: yellowmegaman/trfflhg:2.0.98
+  image: yellowmegaman/container-trufflehog:2.0.98
   commands:
   - /usr/local/bin/trufflehog --regex --entropy=False file:///$CI_WORKSPACE
 
-- name: bstn
-  image: yellowmegaman/pckrdckr:1.3.3
+- name: pack
+  image: yellowmegaman/container-packer:1.3.3
   environment:
-    APP: bstn
     DOCKER_HOST: tcp://serviced:2375
     FROM_IMAGE: "alpine:3.8"
     GLIDER_VERSION: 0.6.9
@@ -30,7 +29,7 @@ steps:
     QUAY_PASSWORD:
       from_secret: quay_password
   commands:
-  - packer build "$APP".json
+  - packer build "$DRONE_REPO_NAME".json
 
 services:
 - name: serviced

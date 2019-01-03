@@ -1,4 +1,4 @@
-# bstn [![Build Status](https://cloud.drone.io/api/badges/yellowmegaman/bstn/status.svg)](https://cloud.drone.io/yellowmegaman/bstn)
+# container-bastion [![Build Status](https://cloud.drone.io/api/badges/yellowmegaman/container-bastion/status.svg)](https://cloud.drone.io/yellowmegaman/container-bastion)
 
 Docker image based on alpine with openssh-client and [Glider](https://github.com/nadoo/glider)
 
@@ -6,12 +6,12 @@ Example usage:
 
 ##### Start the tunnel
 ```
- docker run --rm -ti --net=host yellowmegaman/bastion ash -c 'ssh -o StrictHostKeyChecking=no -qTnN -D 0.0.0.0:8888 user@host -p sshport'
+ docker run --rm -ti --net=host yellowmegaman/container-bastion ash -c 'ssh -o StrictHostKeyChecking=no -qTnN -D 0.0.0.0:8888 user@host -p sshport'
 ```
 
 ##### Start glider http->socks5 proxy
 ```
-docker run --rm -ti --net=host yellowmegaman/bastion ash -c 'glider -listen http://:8384 -forward socks5://127.0.0.1:8888 -verbose'
+docker run --rm -ti --net=host yellowmegaman/container-bastion ash -c 'glider -listen http://:8384 -forward socks5://127.0.0.1:8888 -verbose'
 ```
 
 ##### Test
